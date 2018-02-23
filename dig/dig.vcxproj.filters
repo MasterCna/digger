@@ -16,6 +16,9 @@
     <ClCompile Include="Code\Notifier.cpp">
       <Filter>Code</Filter>
     </ClCompile>
+    <ClCompile Include="Code\CPULimiter.cpp">
+      <Filter>Code</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Scanner.h">
@@ -24,6 +27,8 @@
     <ClInclude Include="Code\Notifier.h">
       <Filter>Code</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Common.h" />
+    <ClInclude Include="Code\CPULimiter.h">
+      <Filter>Code</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

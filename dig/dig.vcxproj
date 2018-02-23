@@ -129,12 +129,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Code\CPULimiter.cpp" />
     <ClCompile Include="Code\digger.cpp" />
     <ClCompile Include="Code\Notifier.cpp" />
     <ClCompile Include="Code\Scanner.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Code\Common.h" />
+    <ClInclude Include="Code\CPULimiter.h" />
     <ClInclude Include="Code\Notifier.h" />
     <ClInclude Include="Code\Scanner.h" />
   </ItemGroup>

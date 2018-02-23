@@ -1,3 +1,11 @@
+/****************************************************************************\
+* Created: 2/9/2018 by Ali Sepehri-Amin
+* Version: 0.9.0000
+* Copyright © Tehranbytes Team.
+* History: -
+* Description: -
+\****************************************************************************/
+
 #pragma once
 
 #include <windows.h>

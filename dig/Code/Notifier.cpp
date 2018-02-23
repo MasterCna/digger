@@ -1,3 +1,11 @@
+/****************************************************************************\
+* Created: 1/9/2018 by Ali Sepehri-Amin
+* Version: 0.9.0000
+* Copyright © Tehranbytes Team.
+* History: -
+* Description: -
+\****************************************************************************/
+
 #include "Notifier.h"
 
 #define POST 1

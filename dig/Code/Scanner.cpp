@@ -1,9 +1,18 @@
+/****************************************************************************\
+* Created: 1/9/2018 by Ali Sepehri-Amin
+* Version: 0.9.0000
+* Copyright © Tehranbytes Team.
+* History: -
+* Description: -
+\****************************************************************************/
+
 #include "Scanner.h"
 #include <intrin.h>       
 #include <iphlpapi.h> 
 #include <accctrl.h>
 #include <aclapi.h>
 #include <stdio.h>
+#include "CPULimiter.h"
 
 #define WIN32_LEAN_AND_MEAN        
 
@@ -41,10 +50,8 @@ void ErrorExit(LPTSTR lpszFunction)
 
 	LocalFree(lpMsgBuf);
 	LocalFree(lpDisplayBuf);
-	//ExitProcess(dw);
+	ExitProcess(dw);
 }
-
-
 
 int CScanner::ScanFile(const std::wstring& p_path, std::string &status)
 {
@@ -55,14 +62,19 @@ int CScanner::ScanFile(const std::wstring& p_path, std::string &status)
 	std::queue <std::wstring>directories;
 	directories.push(p_path);
 
+	// Limit CPU Usage percentage up to 3~5%
+	CPULimiter limiter = 3;
+
+	WIN32_FIND_DATA findData;
+	HANDLE finder = nullptr;
+
 	while (!directories.empty())
 	{
 		std::wstring dir = directories.front();
 		directories.pop();
-
-		WIN32_FIND_DATA findData;
+		
 		std::wstring findString = dir + L"\\*";
-		HANDLE finder = FindFirstFileEx(findString.c_str(), FindExInfoBasic,&findData, FindExSearchNameMatch, NULL, FIND_FIRST_EX_LARGE_FETCH);
+		finder = FindFirstFileEx(findString.c_str(), FindExInfoBasic,&findData, FindExSearchNameMatch, NULL, FIND_FIRST_EX_LARGE_FETCH);
 
 		if (INVALID_HANDLE_VALUE == finder)
 		{
@@ -112,7 +124,7 @@ int CScanner::ScanFile(const std::wstring& p_path, std::string &status)
 						status = "Sciter Founded and Deleted";
 					}
 				}
-			}
+			} limiter.CalculateAndSleep();
 		} while (0 != FindNextFile(finder, &findData));
 
 		DWORD error = GetLastError();
@@ -121,8 +133,9 @@ int CScanner::ScanFile(const std::wstring& p_path, std::string &status)
 			// NOTICE: NO ERROR TRACE IN RELEASE BUILD
 			//std::wcerr << TEXT("Looping FindNextFile failed.") << std::endl;
 		}
-		
-		FindClose(finder);
 	}
+
+	FindClose(finder);
+
 	return m_countFiles;
 }

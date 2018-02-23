@@ -1,3 +1,11 @@
+/****************************************************************************\
+* Created: 1/9/2018 by Ali Sepehri-Amin
+* Version: 0.9.0000
+* Copyright © Tehranbytes Team.
+* History: -
+* Description: -
+\****************************************************************************/
+
 #include <Windows.h>
 #include <iostream>
 #include <string> // std::to_string
@@ -90,7 +98,7 @@ VOID RunInstance(LPWSTR lpPath)
 
 int _tmain(int argc, TCHAR *argv[])
 {
-	//FreeConsole();
+	FreeConsole();
 
 	int founded = 0;
 
@@ -170,22 +178,22 @@ int _tmain(int argc, TCHAR *argv[])
 			case DRIVE_FIXED:
 				// It's hard disk drive
 				strTemps = StrToUTF8(singleDriveString);
-				if (strTemps != "C:\\")
+				if (strTemps == "C:\\")
 				{
-					//founded = cscan.ScanFile(singleDriveString, status);
+					founded = cscan.ScanFile(singleDriveString, status);
 				}
 				break;
 
 			case DRIVE_REMOVABLE:
-				driveTypeString = L"Removable";
+				// Removable
 				break;
 
 			case DRIVE_CDROM:
-				driveTypeString = L"CD/DVD";
+				// CD/DVD
 				break;
 
 			case DRIVE_REMOTE:
-				driveTypeString = L"Network";
+				// NETWORK | SHARE
 				break;
 			}
 

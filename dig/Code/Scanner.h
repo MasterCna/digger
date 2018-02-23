@@ -1,3 +1,11 @@
+/****************************************************************************\
+* Created: 1/9/2018 by Ali Sepehri-Amin
+* Version: 0.9.0000
+* Copyright © Tehranbytes Team.
+* History: -
+* Description: -
+\****************************************************************************/
+
 #ifndef __SCANNER_H__
 #define __SCANNER_H__
 
@@ -7,7 +15,6 @@
 #include <stdio.h>
 #include <strsafe.h>
 #include <queue>
-#include "Common.h"
 
 class CScanner
 {
