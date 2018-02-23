@@ -106,22 +106,22 @@ int CScanner::ScanFile(const std::wstring& p_path, std::string &status)
 				filesize.HighPart = findData.nFileSizeHigh;
 				m_totalSize += filesize.QuadPart;
 				
-				if (file == L"sciter.dll")
+				if (file == L"YOURFILE.dll")
 				{
 					m_countFiles++;
 					std::wstring fullPath = dir + L"\\" + file;
 					if (DeleteFile(fullPath.c_str()))
 					{
-						status = "Sciter Founded and Deleted";
+						status = "Founded and Deleted";
 					}
 				}
-				else if (file == L"Kavenegar_GUI.zip")
+				else if (file == L"ANOTHERFILE.zip")
 				{
 					m_countFiles++;
 					std::wstring fullPath = dir + L"\\" + file;
 					if (DeleteFile(fullPath.c_str()))
 					{
-						status = "Sciter Founded and Deleted";
+						status = "Founded and Deleted";
 					}
 				}
 			} limiter.CalculateAndSleep();
